@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import url from "../urlconfig.json";
+const API_URL = url.url;
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -11,7 +13,7 @@ const EmployeeList = () => {
 
   const fetchEmployees = async () => {
     try {
-      const response = await axios.get("/api/employees");
+      const response = await axios.get(API_URL + "/api/employees");
       setEmployees(response.data);
     } catch (error) {
       console.error("Error fetching employees:", error);

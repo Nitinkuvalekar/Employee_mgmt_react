@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import url from "../urlconfig.json";
+const API_URL = url.url;
 
 const EmployeeForm = () => {
   const [name, setName] = useState("");
@@ -18,7 +20,7 @@ const EmployeeForm = () => {
     formData.append("mobile", mobile);
     photos.forEach((photo) => formData.append("photos", photo));
     try {
-      const response = await axios.post("/api/employees", formData);
+      const response = await axios.post(API_URL + "/api/employees", formData);
       toast.success("Employee added successfully!");
 
       // Clear form fields after successful submission
